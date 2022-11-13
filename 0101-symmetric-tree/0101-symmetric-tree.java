@@ -19,21 +19,13 @@ class Solution {
     }
     
     public boolean isSymmetricTree(TreeNode leftNode, TreeNode rightNode) {
-        if (leftNode == null && rightNode == null) {
-            return true;
-        }
-        if (leftNode == null && rightNode != null) {
-            return false;
-        }
-        if (leftNode != null && rightNode == null) {
-            return false;
+        if (leftNode == null || rightNode == null) {
+            return leftNode == rightNode;
         }
         if (leftNode.val != rightNode.val) {
             return false;
         }
-        boolean a = isSymmetricTree(leftNode.left, rightNode.right);
-        boolean b = isSymmetricTree(leftNode.right, rightNode.left);
         
-        return a == false ? false : b == false ? false : true;
+        return isSymmetricTree(leftNode.right, rightNode.left) && isSymmetricTree(leftNode.left, rightNode.right);
     }
 }
