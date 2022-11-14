@@ -15,17 +15,20 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        return isSymmetricTree(root.left, root.right);
-    }
-    
-    public boolean isSymmetricTree(TreeNode leftNode, TreeNode rightNode) {
-        if (leftNode == null || rightNode == null) {
-            return leftNode == rightNode;
-        }
-        if (leftNode.val != rightNode.val) {
-            return false;
+        if (root == null) return true;
+        Deque<TreeNode> stack = new LinkedList<>();
+        stack.addLast(root.left);
+        stack.addLast(root.right);
+        while (!stack.isEmpty()) {
+            TreeNode right = stack.removeLast(), left = stack.removeLast();
+            if (left == null && right == null) continue;
+            if (left == null || right == null || left.val != right.val) return false;
+            stack.addLast(left.left);
+            stack.addLast(right.right);
+            stack.addLast(left.right);
+            stack.addLast(right.left);
         }
         
-        return isSymmetricTree(leftNode.right, rightNode.left) && isSymmetricTree(leftNode.left, rightNode.right);
+        return true;
     }
 }
