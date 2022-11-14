@@ -1,19 +1,20 @@
 class Solution {
-    public static HashMap<Integer, Integer> map = new HashMap<>();
-
+    Map<Integer, Integer> map = new HashMap<>();
+    
     public int climbStairs(int n) {
-        return this.recursive(n);
+        return helper(n);
     }
-
-    public int recursive(int n) {
-        if (n < 4) {
-            return n;
-        }
+    
+    public int helper(int n) {
+        if (n < 4) return n;
+        
         if (map.containsKey(n)) {
             return map.get(n);
-        } 
-        int result = recursive(n - 1) + recursive(n - 2);
+        }
+        
+        int result = helper(n - 1) + helper(n - 2);
         map.put(n, result);
+        
         return result;
     }
 }
