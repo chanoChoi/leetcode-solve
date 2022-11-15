@@ -1,14 +1,14 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        Queue<Character> queue = new LinkedList<>();
-        int res = 0;
+        Deque<Character> queue = new LinkedList<>();
+        int longest = 0;
         for (char c : s.toCharArray()) {
             while (queue.contains(c)) {
-                queue.poll();
+                queue.removeFirst();
             }
-            queue.offer(c);
-            res = Math.max(res, queue.size());
+            queue.addLast(c);
+            longest = Math.max(longest, queue.size());
         }
-        return res;
+        return longest;
     }
 }
