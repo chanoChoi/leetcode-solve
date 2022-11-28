@@ -11,7 +11,7 @@ class Solution {
                 return 0;
             }
             
-            if (reversed < min / 10 || (reversed == min / 10 && lastDigits > 8)) {
+            if (reversed < min / 10 || (reversed == min / 10 && lastDigits < -8)) {
                 return 0;
             }
             
