@@ -11,4 +11,3 @@ class Solution {
         return num == reverse || num == reverse / 10;
     }
 }
-
