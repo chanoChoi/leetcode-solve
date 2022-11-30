@@ -1,13 +1,11 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        Set<Integer> set = new HashSet<>();
+        // set TC = O(n) SC = O(n)
+//         xor TC = O(n) SC = O(1)
+        int res = 0;
         for (int n : nums) {
-            if (set.contains(n)) {
-                set.remove(n);
-            } else {
-                set.add(n);
-            }
+            res ^= n;
         }
-        return set.iterator().next();
+        return res;
     }
 }
