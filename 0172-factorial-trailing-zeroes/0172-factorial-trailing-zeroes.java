@@ -1,13 +1,13 @@
 class Solution {
     public int trailingZeroes(int n) {
-        if (n < 5) return 0;
+        // 10 == 2 * 5  2가 더 많다. 5가 몇개나 나오는지 확인. 
         int cnt = 0;
-        int i = 5;
-        while (i <= n) {
-            cnt = cnt + (n / i);
-            i = i * 5;
+        int idx = 5;
+        while (n >= idx) {
+            cnt += n / idx;
+            idx = idx * 5;
         }
-
-        return cnt;
+            
+    return cnt;
     }
 }
