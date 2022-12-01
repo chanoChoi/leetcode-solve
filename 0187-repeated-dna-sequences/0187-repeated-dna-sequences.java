@@ -10,6 +10,6 @@ class Solution {
             else set.add(subStr);
         }
         
-        return new ArrayList(list);
+        return list.stream().collect(Collectors.toList());
     }
 }
