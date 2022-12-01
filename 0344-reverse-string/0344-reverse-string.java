@@ -3,15 +3,12 @@ class Solution {
         int left = 0;
         int right = s.length - 1;
         while (left < right) {
-            swap(s, left, right);
-            left++;
-            right--;
+            char tmp = s[left];
+            s[left] = s[right];
+            s[right] = tmp;
+            left = left + 1;
+            right = right - 1;
         }
-    }
     
-    public void swap(char[] s, int left, int right) {
-        char temp = s[left];
-        s[left] = s[right];
-        s[right] = temp;
     }
 }
