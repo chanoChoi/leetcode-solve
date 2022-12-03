@@ -1,15 +1,16 @@
 class Solution {
     public String decodeString(String s) {
-        Deque<String> strStack = new LinkedList<>();
         Deque<Integer> numStack = new LinkedList<>();
+        Deque<String> strStack = new LinkedList<>();
         StringBuilder sb = new StringBuilder();
-        int len = s.length();
-        for (int i = 0; i < len; i++) {
+        
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             if (Character.isDigit(ch)) {
                 int num = ch - '0';
-                while (i + 1 < len && Character.isDigit(s.charAt(i + 1))) {
-                    num = num * 10 + (s.charAt(i + 1) - '0');
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
+                    int lastDigit = s.charAt(i + 1) - '0';
+                    num = num * 10 + lastDigit;
                     i = i + 1;
                 }
                 numStack.addLast(num);
