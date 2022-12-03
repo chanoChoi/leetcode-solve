@@ -1,12 +1,10 @@
 class Solution {
     int start = 0, end = 0;
     public String longestPalindrome(String s) {
-        if (s.length() < 2) return s;
         for (int i = 0; i < s.length() - 1; i++) {
             expendAroundCenter(s, i, i);
             expendAroundCenter(s, i, i + 1);
         }
-        
         return s.substring(start, end + 1);
     }
     
