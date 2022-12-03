@@ -2,20 +2,15 @@ class Solution {
     public int singleNumber(int[] nums) {
         // set TC = O(n) SC = O(n)
 //         xor TC = O(n) SC = O(1)
-        Set<Integer> answer = new HashSet<>();
-        Set<Integer> duplicate = new HashSet<>();
-        
+        Set<Integer> set = new HashSet<>();
         for (int n : nums) {
-            if (answer.contains(n)) {
-                duplicate.add(n);
+            if (set.contains(n)) {
+                set.remove(n);
             } else {
-                answer.add(n);
+                set.add(n);
             }
         }
-        
-        answer.removeAll(duplicate);
-        
-        return answer.iterator().next();
+        return set.iterator().next();
         
         // **중복체크**를 위한 주머니 생성(set 자료구조를 사용) 
         // 주어진 배열을 순회하며 배열내의 수를 조회한다.
