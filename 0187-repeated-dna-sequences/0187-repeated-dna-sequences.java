@@ -10,6 +10,6 @@ class Solution {
             else container.add(substr);
             idx = idx + 1;
         }
-        return new ArrayList(answer);
+        return answer.stream().collect(Collectors.toList());
     }
 }
