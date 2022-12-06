@@ -2,8 +2,7 @@ class Solution {
     public String decodeString(String s) {
         Deque<Integer> numStack = new LinkedList<>();
         Deque<String> strStack = new LinkedList<>();
-        StringBuilder sb = new StringBuilder();
-        
+        StringBuilder ans = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             if (Character.isDigit(ch)) {
@@ -15,19 +14,19 @@ class Solution {
                 }
                 numStack.addLast(num);
             } else if (ch == '[') {
-                strStack.addLast(sb.toString());
-                sb = new StringBuilder();
+                strStack.addLast(ans.toString());
+                ans = new StringBuilder();
             } else if (ch == ']') {
                 int k = numStack.removeLast();
                 StringBuilder tmp = new StringBuilder(strStack.removeLast());
                 for (int j = 0; j < k; j++) {
-                    tmp.append(sb);
+                    tmp.append(ans);
                 }
-                sb = tmp;
+                ans = tmp;
             } else {
-                sb.append(ch);
+                ans.append(ch);
             }
         }
-        return sb.toString();
+        return ans.toString();
     }
 }
