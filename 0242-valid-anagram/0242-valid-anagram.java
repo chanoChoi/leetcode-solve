@@ -8,10 +8,8 @@ class Solution {
         }        
         for (char ch : t.toCharArray()) {
             chars[ch - 'a']--;
+            if (chars[ch - 'a'] < 0) return false;
         }        
-        for (int n : chars) {
-            if (n != 0) return false;
-        }
         
         return true;
     }
