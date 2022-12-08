@@ -3,10 +3,12 @@ class Solution {
         if (s.length() != t.length()) return false;
         
         int[] chars = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            chars[s.charAt(i) - 'a']++;
-            chars[t.charAt(i) - 'a']--;
-        }
+        for (char ch : s.toCharArray()) {
+            chars[ch - 'a']++;
+        }        
+        for (char ch : t.toCharArray()) {
+            chars[ch - 'a']--;
+        }        
         for (int n : chars) {
             if (n != 0) return false;
         }
@@ -14,3 +16,10 @@ class Solution {
         return true;
     }
 }
+
+/*
+for (int i = 0; i < s.length(); i++) {
+            chars[s.charAt(i) - 'a']++;
+            chars[t.charAt(i) - 'a']--;
+}
+        */
