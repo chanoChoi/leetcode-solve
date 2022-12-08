@@ -1,14 +1,15 @@
 class Solution {
     public int search(int[] nums, int target) {
-        return binarySearch(nums, 0, nums.length - 1, target);
+        return binarySearch(nums, target);
     }
     
-    private int binarySearch(int[] nums, int left, int right, int target) {
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] == target) return mid;
-            else if (nums[mid] < target) left = mid + 1;
-            else right = mid - 1;
+    private int binarySearch(int[] nums, int target) {
+        int l = 0, r = nums.length;
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] == target) return m;
+            else if (nums[m] < target) l = m + 1;
+            else r = m;
         }
         return -1;
     }
