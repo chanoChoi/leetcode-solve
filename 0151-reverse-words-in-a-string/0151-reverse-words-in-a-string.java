@@ -1,19 +1,53 @@
 class Solution {
     public String reverseWords(String s) {
-        String[] strs = s.trim().split(" ");
-        StringBuilder sb = new StringBuilder();
-        for (int i = strs.length - 1; i >= 0; i--) {
-            if ("".equals(strs[i])) {
-                while (i - 1 >= 0 && "".equals(strs[i - 1])) {
-                    i--;
-                }
-            } else {
-                sb.append(strs[i]);
-                if (i > 0) {
-                    sb.append(" ");
-                }
+        char[] chars = s.toCharArray();
+        reverse(chars, 0, chars.length - 1);
+        reverseWords(chars);
+        return cleanSpaces(chars);
+    }
+    
+    private String cleanSpaces(char[] chars) {
+        int left = 0;
+        int right = 0;
+        while (right < chars.length) {
+            while (right < chars.length && chars[right] == ' ') right = right + 1;
+            while (right < chars.length && chars[right] != ' ') {
+                chars[left] = chars[right];
+                left = left + 1;
+                right = right + 1;
+            }
+            while (right < chars.length && chars[right] == ' ') right = right + 1;
+            if (right < chars.length) {
+                chars[left] = ' ';
+                left = left + 1;
             }
         }
-        return sb.toString();
+        return new String(chars).substring(0, left);
+    }
+    
+    private void reverseWords(char[] chars) {
+        int left = 0;
+        int right = 0;
+        while (right < chars.length) {
+            while (left < chars.length && chars[left] == ' ') {
+                left = left + 1;
+            }
+            right = left;
+            while (right < chars.length && chars[right] != ' ') {
+                right = right + 1;
+            }
+            reverse(chars, left, right - 1);
+            left = right;
+        }
+    }
+    
+    private void reverse(char[] chars, int left, int right) {
+        while(left < right) {
+            char tmp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = tmp;
+            left = left + 1;
+            right = right - 1;
+        }
     }
 }
