@@ -10,8 +10,8 @@ class Solution {
     
     private void expendAroundCenter(String s, int left, int right) {
         while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-            left--;
-            right++;
+            left = left - 1;
+            right = right + 1;
         }
         left = left + 1;
         right = right - 1;
