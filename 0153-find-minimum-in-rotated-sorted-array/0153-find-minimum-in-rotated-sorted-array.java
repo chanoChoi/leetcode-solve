@@ -13,7 +13,7 @@ class Solution {
                 break;
             }
             if (nums[l] <= nums[m]) l = m + 1;
-            else r = m - 1;
+            else if (nums[r] >= nums[m]) r = m - 1;
         }
         return answer;
     }
