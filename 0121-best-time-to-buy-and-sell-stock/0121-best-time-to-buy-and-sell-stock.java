@@ -6,6 +6,6 @@ class Solution {
             res = Math.max(max - prices[i], res); //5
             max = Math.max(max, prices[i]); //  7
         }
-        return res < 0 ? 0 : res;
+        return Math.max(res, 0);
     }
 }
