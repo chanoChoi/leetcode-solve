@@ -1,6 +1,6 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        if (s.length() == 1 && Character.isSpace(s.charAt(0))) return 0;
+        // if (s.length() == 1 && Character.isSpace(s.charAt(0))) return 0;
         
         int idx = s.length() - 1;
         while (Character.isSpace(s.charAt(idx))) {
