@@ -6,7 +6,6 @@ class Solution {
             carry = sum / 10;
             digits[i] = sum % 10;
         }
-        
         if (carry == 1) {
             int[] newDigits = new int[digits.length + 1];
             newDigits[0] = 1;
