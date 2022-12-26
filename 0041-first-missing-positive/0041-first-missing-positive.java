@@ -6,9 +6,9 @@ class Solution {
             }
         }
         for (int i = 0; i < nums.length; i++) {
-            int index = Math.abs(nums[i]) - 1;
-            if (index < nums.length && nums[index] > 0) {
-                nums[index] *= -1;
+            int idx = Math.abs(nums[i]) - 1;
+            if (idx < nums.length && nums[idx] > 0) {
+                nums[idx] = nums[idx] * -1;
             }
         }
         for (int i = 0; i < nums.length; i++) {
