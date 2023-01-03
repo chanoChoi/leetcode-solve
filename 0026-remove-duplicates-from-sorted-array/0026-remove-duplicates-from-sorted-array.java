@@ -6,10 +6,8 @@ class Solution {
             if (p2 + 1 == nums.length || nums[p2] != nums[p2 + 1]) {
                 nums[p1] = nums[p2];
                 p1++;
-                p2++;
-            } else {
-                p2++;
-            }
+            } 
+            p2++;
         }
         return p1;
     }
