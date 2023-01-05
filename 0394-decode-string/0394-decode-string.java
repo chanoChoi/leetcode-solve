@@ -1,33 +1,33 @@
 class Solution {
     public String decodeString(String s) {
-        StringBuilder sb = new StringBuilder();
-        Deque<String> strStack = new LinkedList<>();
+        StringBuilder answer = new StringBuilder();
         Deque<Integer> numStack = new LinkedList<>();
+        Deque<String> strStack = new LinkedList<>();
         
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             if (Character.isDigit(ch)) {
-                int num = ch - '0';
+                int res = ch - '0';
                 while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
-                    int digit = s.charAt(i + 1) - '0';
-                    num = num * 10 + digit;
+                    ch = s.charAt(i + 1);
+                    res = res * 10 + ch - '0';
                     i = i + 1;
                 }
-                numStack.addLast(num);
+                numStack.addLast(res);
             } else if (ch == '[') {
-                strStack.addLast(sb.toString());
-                sb = new StringBuilder();
+                strStack.addLast(answer.toString());
+                answer = new StringBuilder();
             } else if (ch == ']') {
                 int k = numStack.removeLast();
-                StringBuilder tmp = new StringBuilder(strStack.removeLast());
+                StringBuilder sb = new StringBuilder(strStack.removeLast());
                 for (int j = 0; j < k; j++) {
-                    tmp.append(sb);
+                    sb.append(answer);
                 }
-                sb = tmp;
+                answer = sb;
             } else {
-                sb.append(ch);
+                answer.append(ch);
             }
         }
-        return sb.toString();
+        return answer.toString();
     }
 }
