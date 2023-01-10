@@ -3,20 +3,16 @@ class Solution {
         if (s.length() != t.length()) {
             return false;
         }
-        
-        Map<String, Integer> map = new HashMap<>();
-        char[] chars = new char[26];
+        int[] chars = new int[26];
         for (char ch : s.toCharArray()) {
             chars[ch - 'a']++;
         }
-        map.put(String.valueOf(chars), 1);
-        chars = new char[26];
         for (char ch : t.toCharArray()) {
-            chars[ch - 'a']++;
+            chars[ch - 'a']--;
+            if (chars[ch - 'a'] < 0) {
+                return false;
+            }
         }
-        if (map.containsKey(String.valueOf(chars))) {
-            return true;
-        }
-        return false;
+        return true;
     }
 }
