@@ -6,11 +6,17 @@ class Solution {
             if (nums[m] == target) return m;
             
             if (nums[l] <= nums[m]) {
-                if (nums[l] <= target && target < nums[m]) r = m - 1;
-                else l = m + 1;
+                if (nums[l] <= target && target < nums[m]) {
+                    r = m - 1;
+                } else {
+                    l = m + 1;
+                }
             } else {
-                if (nums[r] >= target && target > nums[m]) l = m + 1;
-                else r = m - 1;
+                if (nums[r] >= target && target > nums[m]) {
+                    l = m + 1;
+                } else {
+                    r = m - 1;
+                }
             }
         }
         return -1;
