@@ -6,13 +6,13 @@ class Solution {
         reverse(nums, k, nums.length - 1);
     }
     
-    private void reverse(int[] nums, int idx1, int idx2) {
-        while (idx1 < idx2) {
-            int tmp = nums[idx1];
-            nums[idx1] = nums[idx2];
-            nums[idx2] = tmp;    
-            idx1 = idx1 + 1;
-            idx2 = idx2 - 1;
+    private void reverse(int[] nums, int left, int right) {
+        while (left < right) {
+            int tmp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = tmp;
+            left = left + 1;
+            right = right - 1;
         }
     }
 }
