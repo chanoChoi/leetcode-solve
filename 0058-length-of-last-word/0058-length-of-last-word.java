@@ -1,17 +1,14 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        // if (s.length() == 1 && Character.isSpace(s.charAt(0))) return 0;
-        
-        int idx = s.length() - 1;
-        while (Character.isSpace(s.charAt(idx))) {
-            idx = idx - 1;
+        int lastIdx = s.length() - 1;
+        while (Character.isSpace(s.charAt(lastIdx))) {
+            lastIdx = lastIdx - 1;
         }
-        
-        int answer = 0;
-        while (idx >= 0 && !Character.isSpace(s.charAt(idx))) {
-            idx = idx - 1;
-            answer = answer + 1;
+        int cnt = 0;
+        while (lastIdx >= 0 && Character.isLetter(s.charAt(lastIdx))) {
+            cnt = cnt + 1;
+            lastIdx = lastIdx - 1;
         }
-        return answer;
+        return cnt;
     }
 }
