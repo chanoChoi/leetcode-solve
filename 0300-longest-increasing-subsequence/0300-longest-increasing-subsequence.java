@@ -14,13 +14,13 @@ class Solution {
         return list.size();
     }
     
-    private int binarySearch(List<Integer> nums, int target) {
-        int l = 0, r = nums.size() - 1;
+    private int binarySearch(List<Integer> list, int target) {
+        int l = 0, r = list.size() - 1;
         while (l < r) {
             int m = l + (r - l) / 2;
-            if (target > nums.get(m)) l = m + 1;
+            if (list.get(m) < target) l = m + 1;
             else r = m;
         }
         return l;
-    } 
-}
+    }
+} 
