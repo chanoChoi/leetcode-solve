@@ -4,8 +4,7 @@ class Solution {
         for (int i = digits.length - 1; i >= 0; i--) {
             int lastDigit = digits[i] + carry;
             carry = lastDigit / 10;
-            lastDigit = lastDigit % 10;
-            digits[i] = lastDigit;
+            digits[i] = lastDigit % 10;
         }
         if (carry == 1) {
             int[] ans = new int[digits.length + 1];
